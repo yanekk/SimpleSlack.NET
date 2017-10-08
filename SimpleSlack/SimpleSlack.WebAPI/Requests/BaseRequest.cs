@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
+using SimpleSlack.WebAPI.Attributes;
 
 namespace SimpleSlack.WebAPI.Requests
 {
@@ -15,15 +17,34 @@ namespace SimpleSlack.WebAPI.Requests
         public Dictionary<string, string> BuildQuery()
         {
             return GetType().GetProperties()
-                .Where(p => p.GetCustomAttribute<JsonPropertyAttribute>() != null)
+                .Where(p =>
+                {
+                    var propertyValue = p.GetValue(this);
+                    if (p.PropertyType.IsEnum)
+                        return (int) propertyValue != 0;
+
+                    return propertyValue != null;
+                })
                 .ToDictionary(
                     p => p.GetCustomAttribute<JsonPropertyAttribute>().PropertyName,
                     p =>
                     {
-                        var value = p.GetValue(this);
-                        return value is string 
-                            ? (string)value 
-                            : JsonConvert.ToString(value);
+                        var propertyType = p.PropertyType;
+                        var propertyValue = p.GetValue(this);
+
+                        if (propertyType == typeof(string))
+                            return (string)propertyValue;
+                        if (propertyType.IsEnum)
+                        {
+                            var name = Enum.GetName(propertyType, propertyValue);
+                            var valueAttribute = propertyType.GetField(name)
+                                .GetCustomAttribute<MemberValueAttribute>();
+                            if (valueAttribute != null)
+                            {
+                                return valueAttribute.Value;
+                            }
+                        }
+                        return JsonConvert.SerializeObject(propertyValue);
                     });
         }
     }

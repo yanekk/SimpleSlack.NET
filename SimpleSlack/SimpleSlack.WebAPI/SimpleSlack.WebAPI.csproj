@@ -46,9 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\MemberValueAttribute.cs" />
     <Compile Include="Connectors\ISlackConnector.cs" />
     <Compile Include="Connectors\SlackConnector.cs" />
+    <Compile Include="Enumerations\ParseMessage.cs" />
     <Compile Include="Exceptions\SlackException.cs" />
+    <Compile Include="Models\Attachment.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Purpose.cs" />
     <Compile Include="Models\Topic.cs" />
@@ -60,6 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\BaseRequest.cs" />
     <Compile Include="Requests\Chat\ChatPostMessageRequest.cs" />
+    <Compile Include="Requests\Chat\GroupMessage.cs" />
     <Compile Include="Requests\Groups\GroupsListRequest.cs" />
     <Compile Include="Responses\BaseResponse.cs" />
     <Compile Include="Responses\Chat\ChatPostMessageResponse.cs" />
@@ -67,7 +71,9 @@
     <Compile Include="SlackWebApiClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="SimpleSlack.WebAPI.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

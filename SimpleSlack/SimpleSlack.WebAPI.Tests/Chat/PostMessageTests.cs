@@ -2,7 +2,9 @@
 using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
+using SimpleSlack.WebAPI.Enumerations;
 using SimpleSlack.WebAPI.Models;
+using SimpleSlack.WebAPI.Requests.Chat;
 using SimpleSlack.WebAPI.Tests.Common;
 
 namespace SimpleSlack.WebAPI.Tests.Chat
@@ -10,15 +12,17 @@ namespace SimpleSlack.WebAPI.Tests.Chat
     [TestFixture]
     internal class PostMessageTests : SlackTestsBase
     {
-        [Test]
-        public void PostMessageTest()
-        {
-            CreateMockClient(@"{
+        private string DefaultResponse = @"{
                 ""ok"": true,
                 ""ts"": ""1405895017.000506"",
                 ""channel"": ""C024BE91L"",
                 ""message"": """"
-            }");
+            }";
+
+        [Test]
+        public void PostSimpleGroupMessageTest()
+        {
+            CreateMockClient(DefaultResponse);
             WebApiClient.Chat.PostMessage(new Group {Id = "12345"}, "Test");
 
             var lastCommand = Connector.Commands.Last();
@@ -27,6 +31,46 @@ namespace SimpleSlack.WebAPI.Tests.Chat
             {
                 new KeyValuePair<string, string>("channel", "12345"),
                 new KeyValuePair<string, string>("text", "Test")
+            });
+        }
+
+        [Test]
+        public void PostSimpleGroupComplexMessageTest()
+        {
+            CreateMockClient(DefaultResponse);
+            WebApiClient.Chat.PostMessage(new Group { Id = "12345" }, new GroupMessage
+            {
+                Message = "this is the message",
+                AsUser = false,
+                Attachments = new List<Attachment> { new Attachment() },
+                IconEmoji = ":chart_with_upwards_trend:",
+                IconUrl = "http://lorempixel.com/48/4",
+                LinkNames = false,
+                Parse = ParseMessage.Full,
+                ReplyBroadcast = false,
+                ThreadTs = "1234",
+                UnfurlLinks = false,
+                UnfurlMedia = true,
+                UserName = "This is me, Mark"
+            });
+
+            var lastCommand = Connector.Commands.Last();
+            lastCommand.CommandName.Should().Be("chat.postMessage");
+            lastCommand.Parameters.Should().Contain(new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("channel", "12345"),
+                new KeyValuePair<string, string>("text", "this is the message"),
+                new KeyValuePair<string, string>("as_user", "false"),
+                new KeyValuePair<string, string>("attachments", "[{}]"),
+                new KeyValuePair<string, string>("icon_emoji", ":chart_with_upwards_trend:"),
+                new KeyValuePair<string, string>("icon_url", "http://lorempixel.com/48/4"),
+                new KeyValuePair<string, string>("link_names", "false"),
+                new KeyValuePair<string, string>("parse", "full"),
+                new KeyValuePair<string, string>("reply_broadcast", "false"),
+                new KeyValuePair<string, string>("thread_ts", "1234"),
+                new KeyValuePair<string, string>("unfurl_links", "false"),
+                new KeyValuePair<string, string>("unfurl_media", "true"),
+                new KeyValuePair<string, string>("username", "This is me, Mark"),
             });
         }
     }

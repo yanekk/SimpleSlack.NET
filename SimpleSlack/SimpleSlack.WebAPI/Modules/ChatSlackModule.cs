@@ -1,4 +1,5 @@
-﻿using SimpleSlack.WebAPI.Connectors;
+﻿using System;
+using SimpleSlack.WebAPI.Connectors;
 using SimpleSlack.WebAPI.Models;
 using SimpleSlack.WebAPI.Modules.Interfaces;
 using SimpleSlack.WebAPI.Requests.Chat;
@@ -14,12 +15,35 @@ namespace SimpleSlack.WebAPI.Modules
 
         public bool PostMessage(Group group, string message)
         {
-            var result = Execute<ChatPostMessageResponse>(new ChatPostMessageRequest
+            return PostMessage(group, new GroupMessage
+            {
+                Message = message
+            });
+        }
+
+        public bool PostMessage(Group group, GroupMessage message)
+        {
+            if(message.Message == null)
+                throw new ArgumentNullException("Message is required");
+
+            var request = new ChatPostMessageRequest
             {
                 Channel = group.Id,
-                Text = message
-            });
-            return result.Ok;
+                Text = message.Message,
+                AsUser = message.AsUser,
+                Attachments = message.Attachments,
+                IconEmoji = message.IconEmoji,
+                IconUrl = message.IconUrl,
+                LinkNames = message.LinkNames,
+                Parse = message.Parse,
+                ReplyBroadcast = message.ReplyBroadcast,
+                ThreadTs = message.ThreadTs,
+                UnfurlLinks = message.UnfurlLinks,
+                UnfurlMedia = message.UnfurlMedia,
+                UserName = message.UserName
+            };
+
+            return Execute<ChatPostMessageResponse>(request).Ok;
         }
     }
 }

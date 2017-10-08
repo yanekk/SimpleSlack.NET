@@ -58,6 +58,8 @@
     <Compile Include="Common\SlackCommand.cs" />
     <Compile Include="ErrorTests.cs" />
     <Compile Include="Groups\GroupsListTests.cs" />
+    <Compile Include="NullableParametersTests.cs" />
+    <Compile Include="ParseEnumsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\SlackTestsBase.cs" />
   </ItemGroup>
