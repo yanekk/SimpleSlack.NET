@@ -46,12 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\MemberValueAttribute.cs" />
-    <Compile Include="Connectors\ISlackConnector.cs" />
-    <Compile Include="Connectors\SlackConnector.cs" />
+    <Compile Include="Core\Attributes\MemberValueAttribute.cs" />
+    <Compile Include="Core\Connectors\ISlackConnector.cs" />
+    <Compile Include="Core\Connectors\SlackConnector.cs" />
     <Compile Include="Enumerations\ParseMessage.cs" />
-    <Compile Include="Exceptions\SlackException.cs" />
-    <Compile Include="Models\Attachment.cs" />
+    <Compile Include="Core\Exceptions\SlackException.cs" />
+    <Compile Include="Requests\Common\Attachment.cs" />
+    <Compile Include="Models\Colour.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Purpose.cs" />
     <Compile Include="Models\Topic.cs" />
@@ -64,6 +65,9 @@
     <Compile Include="Requests\BaseRequest.cs" />
     <Compile Include="Requests\Chat\ChatPostMessageRequest.cs" />
     <Compile Include="Requests\Chat\GroupMessage.cs" />
+    <Compile Include="Requests\Common\AttachmentField.cs" />
+    <Compile Include="Requests\Common\AttachmentFieldRequest.cs" />
+    <Compile Include="Requests\Common\AttachmentRequest.cs" />
     <Compile Include="Requests\Groups\GroupsListRequest.cs" />
     <Compile Include="Responses\BaseResponse.cs" />
     <Compile Include="Responses\Chat\ChatPostMessageResponse.cs" />

@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using SimpleSlack.WebAPI.Enumerations;
 using SimpleSlack.WebAPI.Models;
+using SimpleSlack.WebAPI.Requests.Common;
 
 namespace SimpleSlack.WebAPI.Requests.Chat
 {
@@ -19,7 +20,7 @@ namespace SimpleSlack.WebAPI.Requests.Chat
         public bool? AsUser { get; set; }
 
         [JsonProperty("attachments")]
-        public List<Attachment> Attachments { get; set; }
+        public List<AttachmentRequest> Attachments { get; set; }
 
         [JsonProperty("icon_emoji")]
         public string IconEmoji { get; set; }

@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using SimpleSlack.WebAPI.Enumerations;
 using SimpleSlack.WebAPI.Models;
 using SimpleSlack.WebAPI.Requests.Chat;
+using SimpleSlack.WebAPI.Requests.Common;
 
 namespace SimpleSlack.WebAPI.Samples
 {
@@ -38,7 +40,6 @@ namespace SimpleSlack.WebAPI.Samples
             {
                 Message = "this is the message",
                 AsUser = false,
-                Attachments = new List<Attachment>(),
                 IconEmoji = ":chart_with_upwards_trend:",
                 IconUrl = "http://lorempixel.com/48/4",
                 LinkNames = false,
@@ -48,6 +49,45 @@ namespace SimpleSlack.WebAPI.Samples
                 UnfurlLinks = false,
                 UnfurlMedia = true,
                 UserName = "Tom Hanks"
+            });
+        }
+
+        [Test]
+        public void PostMessageOnGroupWithAttachment()
+        {
+            var client = new SlackWebApiClient("## api-token ##");
+            var groups = client.Groups.List();
+            var myGroup = groups.Single(g => g.Name == "my-group");
+
+            // post a message with attachment
+            client.Chat.PostMessage(myGroup, new GroupMessage
+            {
+                Message = "this is the message",
+                AsUser = false,
+                Attachments = new List<Attachment> {
+                    new Attachment {
+                        Fallback = "Fallback message",
+                        Color = Colour.Danger,
+                        Pretext = "Pretext",
+                        AuthorName = "Bobby Tables",
+                        AuthorLink = "http://flickr.com/bobby/",
+                        AuthorIcon = "http://flickr.com/icons/bobby.jpg",
+                        Title = "Slack API Documentation",
+                        TitleLink = "https://api.slack.com/",
+                        Text = "Optional text that appears within the attachment",
+                        Fields = new List<AttachmentField>
+                            {
+                                new AttachmentField("First field", "First field value"),
+                                new AttachmentField("Second field", "Second field value", true),
+                                new AttachmentField("Third field", "Third field value", true)
+                            },
+                        ImageUrl = "http://my-website.com/path/to/image.jpg",
+                        ThumbUrl = "http://example.com/path/to/thumb.png",
+                        Footer = "Slack API",
+                        FooterIcon = "https://platform.slack-edge.com/img/default_application_icon.png",
+                        TimeStamp = new DateTime(2000, 01, 01)
+                    }
+                }
             });
         }
     }

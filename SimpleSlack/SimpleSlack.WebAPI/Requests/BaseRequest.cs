@@ -44,7 +44,11 @@ namespace SimpleSlack.WebAPI.Requests
                                 return valueAttribute.Value;
                             }
                         }
-                        return JsonConvert.SerializeObject(propertyValue);
+                        var jsonSerializerSettings = new JsonSerializerSettings
+                        {
+                            NullValueHandling = NullValueHandling.Ignore
+                        };
+                        return JsonConvert.SerializeObject(propertyValue, Formatting.None, jsonSerializerSettings);
                     });
         }
     }

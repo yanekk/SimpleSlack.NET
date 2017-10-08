@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using SimpleSlack.WebAPI.Enumerations;
 using SimpleSlack.WebAPI.Models;
+using SimpleSlack.WebAPI.Requests.Common;
 
 namespace SimpleSlack.WebAPI.Requests.Chat
 {
