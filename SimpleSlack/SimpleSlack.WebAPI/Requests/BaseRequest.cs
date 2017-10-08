@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
-using SimpleSlack.WebAPI.Attributes;
+using SimpleSlack.WebAPI.Core.Attributes;
 
 namespace SimpleSlack.WebAPI.Requests
 {

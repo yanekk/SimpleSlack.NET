@@ -1,7 +1,7 @@
 ﻿using System;
 using FluentAssertions;
 using NUnit.Framework;
-using SimpleSlack.WebAPI.Exceptions;
+using SimpleSlack.WebAPI.Core.Exceptions;
 using SimpleSlack.WebAPI.Tests.Common;
 
 namespace SimpleSlack.WebAPI.Tests

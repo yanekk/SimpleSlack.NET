@@ -5,7 +5,7 @@ using System.Net;
 using System.Text;
 using System.Web;
 
-namespace SimpleSlack.WebAPI.Connectors
+namespace SimpleSlack.WebAPI.Core.Connectors
 {
     internal class SlackConnector : ISlackConnector
     {

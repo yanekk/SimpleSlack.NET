@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
-using SimpleSlack.WebAPI.Connectors;
-using SimpleSlack.WebAPI.Exceptions;
+using SimpleSlack.WebAPI.Core.Connectors;
+using SimpleSlack.WebAPI.Core.Exceptions;
 using SimpleSlack.WebAPI.Requests;
 using SimpleSlack.WebAPI.Responses;
 

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using SimpleSlack.WebAPI.Connectors;
+using SimpleSlack.WebAPI.Core.Connectors;
 
 namespace SimpleSlack.WebAPI.Tests.Common
 {

@@ -1,5 +1,5 @@
 ﻿using System;
-using SimpleSlack.WebAPI.Connectors;
+using SimpleSlack.WebAPI.Core.Connectors;
 using SimpleSlack.WebAPI.Models;
 using SimpleSlack.WebAPI.Modules.Interfaces;
 using SimpleSlack.WebAPI.Requests.Chat;

@@ -1,4 +1,4 @@
-﻿using SimpleSlack.WebAPI.Connectors;
+﻿using SimpleSlack.WebAPI.Core.Connectors;
 using SimpleSlack.WebAPI.Modules;
 using SimpleSlack.WebAPI.Modules.Interfaces;
 

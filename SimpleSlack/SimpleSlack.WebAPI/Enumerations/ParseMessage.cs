@@ -1,4 +1,4 @@
-﻿using SimpleSlack.WebAPI.Attributes;
+﻿using SimpleSlack.WebAPI.Core.Attributes;
 
 namespace SimpleSlack.WebAPI.Enumerations
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SimpleSlack.WebAPI.Exceptions
+namespace SimpleSlack.WebAPI.Core.Exceptions
 {
     public class SlackException : Exception
     {

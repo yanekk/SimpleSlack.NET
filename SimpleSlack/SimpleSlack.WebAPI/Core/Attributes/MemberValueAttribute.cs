@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SimpleSlack.WebAPI.Attributes
+namespace SimpleSlack.WebAPI.Core.Attributes
 {
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
     internal class MemberValueAttribute : Attribute
