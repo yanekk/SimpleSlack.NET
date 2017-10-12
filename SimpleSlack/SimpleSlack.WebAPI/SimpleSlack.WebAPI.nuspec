@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SimpleSlack.WebAPI</id>
-    <version>0.0.1-prealpha</version>
+    <version>0.0.2-prealpha</version>
     <title>SimpleSlack.WebAPI</title>
     <authors>yanekk</authors>
     <owners>yanekk</owners>
@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/yanekk/SimpleSlack.NET</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Synchronous C#.NET Slack WebAPI library, designed to be as simple as possible to use.</description>
-    <releaseNotes>Initial, pre-pre-prealpha version. Only group.list and chat.postMessage methods are implemented</releaseNotes>
+    <releaseNotes>chat.postMessage enriched with custom message properties</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>slack webapi</tags>
   </metadata>
