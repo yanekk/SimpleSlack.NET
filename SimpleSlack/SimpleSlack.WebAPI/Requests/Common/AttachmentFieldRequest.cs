@@ -2,15 +2,15 @@
 
 namespace SimpleSlack.WebAPI.Requests.Common
 {
-    internal class AttachmentFieldRequest
+    public class AttachmentField
     {
         [JsonProperty("title")]
-        public string Title { get; set; }
+        public string Title { get; internal set; }
 
         [JsonProperty("value")]
-        public string Value { get; set; }
+        public string Value { get; internal set; }
 
         [JsonProperty("short")]
-        public bool Short { get; set; }
+        public bool Short { get; internal set; }
     }
 }

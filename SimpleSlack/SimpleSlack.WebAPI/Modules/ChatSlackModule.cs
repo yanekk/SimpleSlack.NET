@@ -18,40 +18,40 @@ namespace SimpleSlack.WebAPI.Modules
 
         public bool PostMessage(Group group, string message)
         {
-            return PostMessage(group, new GroupMessage
+            return PostMessage(group, new GroupMessageParameters
             {
                 Message = message
             });
         }
 
-        public bool PostMessage(Group group, GroupMessage message)
+        public bool PostMessage(Group group, GroupMessageParameters messageParameters)
         {
-            if(message.Message == null)
+            if(messageParameters.Message == null)
                 throw new ArgumentNullException("Message is required");
 
             var request = new ChatPostMessageRequest
             {
                 Channel = group.Id,
-                Text = message.Message,
-                AsUser = message.AsUser,
-                IconEmoji = message.IconEmoji,
-                IconUrl = message.IconUrl,
-                LinkNames = message.LinkNames,
-                Parse = message.Parse,
-                ReplyBroadcast = message.ReplyBroadcast,
-                ThreadTs = message.ThreadTs,
-                UnfurlLinks = message.UnfurlLinks,
-                UnfurlMedia = message.UnfurlMedia,
-                UserName = message.UserName
+                Text = messageParameters.Message,
+                AsUser = messageParameters.AsUser,
+                IconEmoji = messageParameters.IconEmoji,
+                IconUrl = messageParameters.IconUrl,
+                LinkNames = messageParameters.LinkNames,
+                Parse = messageParameters.Parse,
+                ReplyBroadcast = messageParameters.ReplyBroadcast,
+                ThreadTs = messageParameters.ThreadTs,
+                UnfurlLinks = messageParameters.UnfurlLinks,
+                UnfurlMedia = messageParameters.UnfurlMedia,
+                UserName = messageParameters.UserName
             };
 
-            if (message.Attachments == null || !message.Attachments.Any())
+            if (messageParameters.Attachments == null || !messageParameters.Attachments.Any())
                 return Execute<ChatPostMessageResponse>(request).Ok;
 
-            request.Attachments = new List<AttachmentRequest>();
-            foreach (var attachment in message.Attachments)
+            request.Attachments = new List<Attachment>();
+            foreach (var attachment in messageParameters.Attachments)
             {
-                var attachmentRequest = new AttachmentRequest
+                var attachmentRequest = new Attachment
                 {
                     Fallback = attachment.Fallback,
                     Color = attachment.Color?.Value,
@@ -72,10 +72,10 @@ namespace SimpleSlack.WebAPI.Modules
                 if (attachment.Fields == null || !attachment.Fields.Any())
                     continue;
 
-                attachmentRequest.Fields = new List<AttachmentFieldRequest>();
+                attachmentRequest.Fields = new List<AttachmentField>();
                 foreach (var field in attachment.Fields)
                 {
-                    attachmentRequest.Fields.Add(new AttachmentFieldRequest
+                    attachmentRequest.Fields.Add(new AttachmentField
                     {
                         Title = field.Title,
                         Value = field.Value,

@@ -20,7 +20,7 @@ namespace SimpleSlack.WebAPI.Tests
                 ""channel"": ""C024BE91L"",
                 ""message"": """"
             }");
-            WebApiClient.Chat.PostMessage(new Group { Id = "12345" }, new GroupMessage
+            WebApiClient.Chat.PostMessage(new Group { Id = "12345" }, new GroupMessageParameters
             {
                 Message = "Test Message",
                 AsUser = true,

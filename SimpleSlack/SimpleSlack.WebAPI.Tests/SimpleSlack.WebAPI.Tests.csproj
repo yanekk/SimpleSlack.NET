@@ -57,6 +57,7 @@
     <Compile Include="Common\MockSlackConnector.cs" />
     <Compile Include="Common\SlackCommand.cs" />
     <Compile Include="ErrorTests.cs" />
+    <Compile Include="Groups\GroupsHistoryTests.cs" />
     <Compile Include="Groups\GroupsListTests.cs" />
     <Compile Include="NullableParametersTests.cs" />
     <Compile Include="ParseEnumsTests.cs" />

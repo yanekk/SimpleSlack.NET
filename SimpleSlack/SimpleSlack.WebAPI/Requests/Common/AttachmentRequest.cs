@@ -1,53 +1,69 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using SimpleSlack.WebAPI.Models;
 
 namespace SimpleSlack.WebAPI.Requests.Common
 {
-    internal class AttachmentRequest
+    public class AttachmentRequest
     {
-        [JsonProperty("fallback")]
+        /// <summary>
+        /// Required plain-text summary of the attachment.
+        /// </summary>
         public string Fallback { get; set; }
 
-        [JsonProperty("color")]
-        public string Color { get; set; }
+        /// <summary>
+        /// Colour of strip located on the left of the text.
+        /// </summary>
+        public Colour Color { get; set; }
 
-        [JsonProperty("pretext")]
+        /// <summary>
+        /// Optional text that appears above the attachment block.
+        /// </summary>
         public string Pretext { get; set; }
 
-        [JsonProperty("author_name")]
+        /// <summary>
+        /// Name of the author
+        /// </summary>
         public string AuthorName { get; set; }
 
-        [JsonProperty("author_link")]
+        /// <summary>
+        /// Link to author
+        /// </summary>
         public string AuthorLink { get; set; }
 
-        [JsonProperty("author_icon")]
+        /// <summary>
+        /// Author icon
+        /// </summary>
         public string AuthorIcon { get; set; }
 
-        [JsonProperty("title")]
+        /// <summary>
+        /// Attachment's title
+        /// </summary>
         public string Title { get; set; }
 
-        [JsonProperty("title_link")]
+        /// <summary>
+        /// Attachment's title link
+        /// </summary>
         public string TitleLink { get; set; }
 
-        [JsonProperty("text")]
+        /// <summary>
+        /// Attachment's text
+        /// </summary>
         public string Text { get; set; }
 
-        [JsonProperty("fields")]
+        /// <summary>
+        /// Attachment's fields
+        /// </summary>
         public List<AttachmentFieldRequest> Fields { get; set; }
 
-        [JsonProperty("image_url")]
         public string ImageUrl { get; set; }
 
-        [JsonProperty("thumb_url")]
         public string ThumbUrl { get; set; }
 
-        [JsonProperty("footer")]
         public string Footer { get; set; }
 
-        [JsonProperty("footer_icon")]
         public string FooterIcon { get; set; }
 
-        [JsonProperty("ts")]
-        public long? TimeStamp { get; set; }
+        public DateTime TimeStamp { get; set; }
     }
 }
