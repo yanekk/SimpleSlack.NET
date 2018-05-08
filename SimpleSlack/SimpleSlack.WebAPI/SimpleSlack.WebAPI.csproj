@@ -51,6 +51,10 @@
     <Compile Include="Core\Connectors\SlackConnector.cs" />
     <Compile Include="Enumerations\ParseMessage.cs" />
     <Compile Include="Core\Exceptions\SlackException.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserProfile.cs" />
+    <Compile Include="Modules\Interfaces\IUsersSlackModule.cs" />
+    <Compile Include="Modules\UsersSlackModule.cs" />
     <Compile Include="Requests\Common\Attachment.cs" />
     <Compile Include="Models\Colour.cs" />
     <Compile Include="Models\Group.cs" />
@@ -69,9 +73,11 @@
     <Compile Include="Requests\Common\AttachmentFieldRequest.cs" />
     <Compile Include="Requests\Common\AttachmentRequest.cs" />
     <Compile Include="Requests\Groups\GroupsListRequest.cs" />
+    <Compile Include="Requests\Users\UsersListRequest.cs" />
     <Compile Include="Responses\BaseResponse.cs" />
     <Compile Include="Responses\Chat\ChatPostMessageResponse.cs" />
     <Compile Include="Responses\Groups\GroupsListResponse.cs" />
+    <Compile Include="Responses\Users\UsersListResponse.cs" />
     <Compile Include="SlackWebApiClient.cs" />
   </ItemGroup>
   <ItemGroup>

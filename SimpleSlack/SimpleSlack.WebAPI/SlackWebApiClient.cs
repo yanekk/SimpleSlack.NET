@@ -8,6 +8,7 @@ namespace SimpleSlack.WebAPI
     {
         public readonly IChatSlackModule Chat;
         public readonly IGroupsSlackModule Groups;
+        public readonly IUsersSlackModule Users;
 
         public SlackWebApiClient(string token) : this(token, new SlackConnector())
         {
@@ -18,6 +19,7 @@ namespace SimpleSlack.WebAPI
         {
             Chat = new ChatSlackModule(token, connector);
             Groups = new GroupsSlackModule(token, connector);
+            Users = new UsersSlackModule(token, connector);
         }
     }
 }
