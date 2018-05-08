@@ -40,11 +40,11 @@ namespace SimpleSlack.WebAPI.Tests.Chat
         public void PostComplexGroupMessageTest()
         {
             CreateMockClient(DefaultResponse);
-            WebApiClient.Chat.PostMessage(new Group { Id = "12345" }, new GroupMessage
+            WebApiClient.Chat.PostMessage(new Group { Id = "12345" }, new GroupMessageParameters
             {
                 Message = "this is the message",
                 AsUser = false,
-                Attachments = new List<Attachment> { new Attachment() },
+                Attachments = new List<AttachmentRequest> { new AttachmentRequest() },
                 IconEmoji = ":chart_with_upwards_trend:",
                 IconUrl = "http://lorempixel.com/48/4",
                 LinkNames = false,
@@ -80,11 +80,11 @@ namespace SimpleSlack.WebAPI.Tests.Chat
         public void PostGroupMessageWithAttachmentTest()
         {
             CreateMockClient(DefaultResponse);
-            WebApiClient.Chat.PostMessage(new Group { Id = "12345" }, new GroupMessage
+            WebApiClient.Chat.PostMessage(new Group { Id = "12345" }, new GroupMessageParameters
             {
                 Message = "this is the message",
-                Attachments = new List<Attachment> {
-                    new Attachment {
+                Attachments = new List<AttachmentRequest> {
+                    new AttachmentRequest {
                     Fallback = "Fallback message",
                     Color = Colour.Danger,
                     Pretext = "Pretext",
@@ -94,11 +94,11 @@ namespace SimpleSlack.WebAPI.Tests.Chat
                     Title = "Slack API Documentation",
                     TitleLink = "https://api.slack.com/",
                     Text = "Optional text that appears within the attachment",
-                    Fields = new List<AttachmentField>
+                    Fields = new List<AttachmentFieldRequest>
                         {
-                            new AttachmentField("First field", "First field value"),
-                            new AttachmentField("Second field", "Second field value", true),
-                            new AttachmentField("Third field", "Third field value", true)
+                            new AttachmentFieldRequest("First field", "First field value"),
+                            new AttachmentFieldRequest("Second field", "Second field value", true),
+                            new AttachmentFieldRequest("Third field", "Third field value", true)
                         },
                     ImageUrl = "http://my-website.com/path/to/image.jpg",
                     ThumbUrl = "http://example.com/path/to/thumb.png",

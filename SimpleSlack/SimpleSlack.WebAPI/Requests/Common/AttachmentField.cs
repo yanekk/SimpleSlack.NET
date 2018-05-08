@@ -1,12 +1,12 @@
 ﻿namespace SimpleSlack.WebAPI.Requests.Common
 {
-    public class AttachmentField
+    public class AttachmentFieldRequest
     {
         internal string Title { get; set; }
         internal string Value { get; set; }
         internal bool IsShort { get; set; }
 
-        public AttachmentField(string title, string value, bool isShort = false)
+        public AttachmentFieldRequest(string title, string value, bool isShort = false)
         {
             Title = title;
             Value = value;

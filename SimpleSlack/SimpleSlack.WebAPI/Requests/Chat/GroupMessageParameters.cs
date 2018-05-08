@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using SimpleSlack.WebAPI.Enumerations;
-using SimpleSlack.WebAPI.Models;
 using SimpleSlack.WebAPI.Requests.Common;
 
 namespace SimpleSlack.WebAPI.Requests.Chat
 {
-    public class GroupMessage
+    public class GroupMessageParameters
     {
         /// <summary>
         /// Required. Text of the message to send.
@@ -20,7 +19,7 @@ namespace SimpleSlack.WebAPI.Requests.Chat
         /// <summary>
         /// Optional. An array of attachments. Defaults to false. 
         /// </summary>
-        public List<Attachment> Attachments;
+        public List<AttachmentRequest> Attachments;
 
         /// <summary>
         /// Optional. Emoji to use as the icon for this message.Overrides icon_url.Must be used in conjunction with as_user set to false, otherwise ignored.

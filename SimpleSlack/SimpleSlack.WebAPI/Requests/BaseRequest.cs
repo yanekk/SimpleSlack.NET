@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
@@ -44,6 +45,19 @@ namespace SimpleSlack.WebAPI.Requests
                                 return valueAttribute.Value;
                             }
                         }
+                        var jsonConverterAttribute = p.GetCustomAttribute<JsonConverterAttribute>();
+                        if (jsonConverterAttribute != null)
+                        {
+                            var jsonConverter = Activator.CreateInstance(jsonConverterAttribute.ConverterType) as JsonConverter;
+                            if (jsonConverter != null)
+                            {
+                                var stringWriter = new StringWriter();
+                                var jsonWriter = new JsonTextWriter(stringWriter);
+                                jsonConverter.WriteJson(jsonWriter, propertyValue, new JsonSerializer());
+                                return stringWriter.ToString();
+                            }
+                        }
+
                         var jsonSerializerSettings = new JsonSerializerSettings
                         {
                             NullValueHandling = NullValueHandling.Ignore

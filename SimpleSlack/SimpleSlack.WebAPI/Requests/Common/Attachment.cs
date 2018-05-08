@@ -1,69 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
-using SimpleSlack.WebAPI.Models;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace SimpleSlack.WebAPI.Requests.Common
 {
     public class Attachment
     {
-        /// <summary>
-        /// Required plain-text summary of the attachment.
-        /// </summary>
-        public string Fallback { get; set; }
+        [JsonProperty("fallback")]
+        public string Fallback { get; internal set; }
 
-        /// <summary>
-        /// Colour of strip located on the left of the text.
-        /// </summary>
-        public Colour Color { get; set; }
+        [JsonProperty("color")]
+        public string Color { get; internal set; }
 
-        /// <summary>
-        /// Optional text that appears above the attachment block.
-        /// </summary>
-        public string Pretext { get; set; }
+        [JsonProperty("pretext")]
+        public string Pretext { get; internal set; }
 
-        /// <summary>
-        /// Name of the author
-        /// </summary>
-        public string AuthorName { get; set; }
+        [JsonProperty("author_name")]
+        public string AuthorName { get; internal set; }
 
-        /// <summary>
-        /// Link to author
-        /// </summary>
-        public string AuthorLink { get; set; }
+        [JsonProperty("author_link")]
+        public string AuthorLink { get; internal set; }
 
-        /// <summary>
-        /// Author icon
-        /// </summary>
-        public string AuthorIcon { get; set; }
+        [JsonProperty("author_icon")]
+        public string AuthorIcon { get; internal set; }
 
-        /// <summary>
-        /// Attachment's title
-        /// </summary>
-        public string Title { get; set; }
+        [JsonProperty("title")]
+        public string Title { get; internal set; }
 
-        /// <summary>
-        /// Attachment's title link
-        /// </summary>
-        public string TitleLink { get; set; }
+        [JsonProperty("title_link")]
+        public string TitleLink { get; internal set; }
 
-        /// <summary>
-        /// Attachment's text
-        /// </summary>
-        public string Text { get; set; }
+        [JsonProperty("text")]
+        public string Text { get; internal set; }
 
-        /// <summary>
-        /// Attachment's fields
-        /// </summary>
-        public List<AttachmentField> Fields { get; set; }
+        [JsonProperty("fields")]
+        public List<AttachmentField> Fields { get; internal set; }
 
-        public string ImageUrl { get; set; }
+        [JsonProperty("image_url")]
+        public string ImageUrl { get; internal set; }
 
-        public string ThumbUrl { get; set; }
+        [JsonProperty("thumb_url")]
+        public string ThumbUrl { get; internal set; }
 
-        public string Footer { get; set; }
+        [JsonProperty("footer")]
+        public string Footer { get; internal set; }
 
-        public string FooterIcon { get; set; }
+        [JsonProperty("footer_icon")]
+        public string FooterIcon { get; internal set; }
 
-        public DateTime TimeStamp { get; set; }
+        [JsonProperty("ts")]
+        public long? TimeStamp { get; internal set; }
     }
 }

@@ -49,8 +49,12 @@
     <Compile Include="Core\Attributes\MemberValueAttribute.cs" />
     <Compile Include="Core\Connectors\ISlackConnector.cs" />
     <Compile Include="Core\Connectors\SlackConnector.cs" />
+    <Compile Include="Core\Converters\AccurateDateTimeConverter.cs" />
     <Compile Include="Enumerations\ParseMessage.cs" />
     <Compile Include="Core\Exceptions\SlackException.cs" />
+    <Compile Include="Models\AccurateDateTime.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Requests\Common\AttachmentRequest.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Modules\Interfaces\IUsersSlackModule.cs" />
@@ -68,15 +72,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\BaseRequest.cs" />
     <Compile Include="Requests\Chat\ChatPostMessageRequest.cs" />
-    <Compile Include="Requests\Chat\GroupMessage.cs" />
+    <Compile Include="Requests\Chat\GroupMessageParameters.cs" />
     <Compile Include="Requests\Common\AttachmentField.cs" />
     <Compile Include="Requests\Common\AttachmentFieldRequest.cs" />
-    <Compile Include="Requests\Common\AttachmentRequest.cs" />
+    <Compile Include="Requests\Common\Attachment.cs" />
+    <Compile Include="Requests\Groups\GroupHistoryParameters.cs" />
+    <Compile Include="Requests\Groups\GroupsHistoryRequest.cs" />
     <Compile Include="Requests\Groups\GroupsListRequest.cs" />
     <Compile Include="Requests\Users\UsersListRequest.cs" />
     <Compile Include="Responses\BaseResponse.cs" />
     <Compile Include="Responses\Chat\ChatPostMessageResponse.cs" />
+    <Compile Include="Responses\Groups\GroupsHistoryResponse.cs" />
     <Compile Include="Responses\Groups\GroupsListResponse.cs" />
+    <Compile Include="Responses\Groups\Interfaces\IGroupsHistoryResponse.cs" />
     <Compile Include="Responses\Users\UsersListResponse.cs" />
     <Compile Include="SlackWebApiClient.cs" />
   </ItemGroup>
