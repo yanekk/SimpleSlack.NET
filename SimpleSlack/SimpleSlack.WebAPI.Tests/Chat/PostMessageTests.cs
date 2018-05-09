@@ -40,7 +40,7 @@ namespace SimpleSlack.WebAPI.Tests.Chat
         public void PostComplexGroupMessageTest()
         {
             CreateMockClient(DefaultResponse);
-            WebApiClient.Chat.PostMessage(new Group { Id = "12345" }, new GroupMessageParameters
+            WebApiClient.Chat.PostMessage(new Group { Id = "12345" }, new MessageParameters
             {
                 Message = "this is the message",
                 AsUser = false,
@@ -80,7 +80,7 @@ namespace SimpleSlack.WebAPI.Tests.Chat
         public void PostGroupMessageWithAttachmentTest()
         {
             CreateMockClient(DefaultResponse);
-            WebApiClient.Chat.PostMessage(new Group { Id = "12345" }, new GroupMessageParameters
+            WebApiClient.Chat.PostMessage(new Group { Id = "12345" }, new MessageParameters
             {
                 Message = "this is the message",
                 Attachments = new List<AttachmentRequest> {

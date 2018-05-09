@@ -36,7 +36,7 @@ namespace SimpleSlack.WebAPI.Samples
             var myGroup = groups.Single(g => g.Name == "my-group");
 
             // post a message with various parameters
-            client.Chat.PostMessage(myGroup, new GroupMessageParameters
+            client.Chat.PostMessage(myGroup, new MessageParameters
             {
                 Message = "this is the message",
                 AsUser = false,
@@ -60,7 +60,7 @@ namespace SimpleSlack.WebAPI.Samples
             var myGroup = groups.Single(g => g.Name == "my-group");
 
             // post a message with attachment
-            client.Chat.PostMessage(myGroup, new GroupMessageParameters
+            client.Chat.PostMessage(myGroup, new MessageParameters
             {
                 Message = "this is the message",
                 AsUser = false,

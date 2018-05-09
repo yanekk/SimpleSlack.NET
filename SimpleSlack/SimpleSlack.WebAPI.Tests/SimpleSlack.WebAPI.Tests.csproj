@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chat\DirectMessagesTests.cs" />
     <Compile Include="Chat\PostMessageTests.cs" />
     <Compile Include="Common\MockSlackConnector.cs" />
     <Compile Include="Common\SlackCommand.cs" />

@@ -18,20 +18,38 @@ namespace SimpleSlack.WebAPI.Modules
 
         public bool PostMessage(Group group, string message)
         {
-            return PostMessage(group, new GroupMessageParameters
+            return PostMessage(group, new MessageParameters
             {
                 Message = message
             });
         }
 
-        public bool PostMessage(Group group, GroupMessageParameters messageParameters)
+        public bool PostMessage(DirectMessageChannel channel, string message)
+        {
+            return PostMessage(channel.Id, new MessageParameters
+            {
+                Message = message
+            });
+        }
+
+        public bool PostMessage(DirectMessageChannel channel, MessageParameters messageParameters)
+        {
+            return PostMessage(channel.Id, messageParameters);
+        }
+
+        public bool PostMessage(Group group, MessageParameters messageParameters)
+        {
+            return PostMessage(group.Id, messageParameters);
+        }
+
+        private bool PostMessage(string channelId, MessageParameters messageParameters)
         {
             if(messageParameters.Message == null)
                 throw new ArgumentNullException("Message is required");
 
             var request = new ChatPostMessageRequest
             {
-                Channel = group.Id,
+                Channel = channelId,
                 Text = messageParameters.Message,
                 AsUser = messageParameters.AsUser,
                 IconEmoji = messageParameters.IconEmoji,

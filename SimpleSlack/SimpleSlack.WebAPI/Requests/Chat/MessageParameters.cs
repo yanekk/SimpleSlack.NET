@@ -4,7 +4,7 @@ using SimpleSlack.WebAPI.Requests.Common;
 
 namespace SimpleSlack.WebAPI.Requests.Chat
 {
-    public class GroupMessageParameters
+    public class MessageParameters
     {
         /// <summary>
         /// Required. Text of the message to send.

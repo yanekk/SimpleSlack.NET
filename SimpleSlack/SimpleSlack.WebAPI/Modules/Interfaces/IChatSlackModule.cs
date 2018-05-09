@@ -6,6 +6,8 @@ namespace SimpleSlack.WebAPI.Modules.Interfaces
     public interface IChatSlackModule
     {
         bool PostMessage(Group group, string message);
-        bool PostMessage(Group group, GroupMessageParameters messageParameters);
+        bool PostMessage(DirectMessageChannel channel, string message);
+        bool PostMessage(DirectMessageChannel channel, MessageParameters messageParameters);
+        bool PostMessage(Group group, MessageParameters messageParameters);
     }
 }
