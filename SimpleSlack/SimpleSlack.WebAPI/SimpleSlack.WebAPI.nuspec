@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/yanekk/SimpleSlack.NET</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Synchronous C#.NET Slack WebAPI library, designed to be as simple as possible to use.</description>
-    <releaseNotes>added groups & direct messages handling</releaseNotes>
+    <releaseNotes>added groups &amp; direct messages handling</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>slack webapi</tags>
   </metadata>
